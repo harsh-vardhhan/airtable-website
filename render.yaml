@@ -1,0 +1,18 @@
+# A static site
+- type: web
+  name: Application
+  env: static
+  buildCommand: yarn build
+  staticPublishPath: ./build
+  pullRequestPreviewsEnabled: true     # optional
+  headers:
+  - path: /*
+    name: X-Frame-Options
+    value: sameorigin
+  routes:
+  - type: redirect
+    source: /old
+    destination: /new
+  - type: rewrite
+    source: /a/*
+    destination: /a
